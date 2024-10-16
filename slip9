@@ -1,0 +1,53 @@
+Slip9: Write a PHP script for the following: Design a form having a text box and a drop
+down list containing any 3 separators(e.g. #, |, %, @, ! or comma) accept a strings from the
+user and also a separator.
+a. Split the string into separate words using the given separator.
+b. Replace all the occurrences of separator in the given string with some other separator.
+c. Find the last word in the given string.
+HTML FILE
+<html>
+<body>
+<form action="slip_9.php"method="get">
+Enter a string:<input type="text" name="str1"><br>
+choose a label
+<select name="sep" id="sep">
+<option value="#">#</option>
+<option value="!">!</option>
+<option value="@">@</option>
+</select><br>
+<input type="radio" name="op" value="a">Split The String Using The Seperator<br>
+<input type="radio" name="op" value="b">Replace The Occurences Of The
+Seperator With Another Seperator<br>
+<input type="radio" name="op" value="c">Find The Last Word Of The String<br>
+<input type="submit"value="submit">
+</form>
+</body>
+</html>
+
+
+
+PHP FILE
+<?php
+$str=$_GET['str1'];
+$sep=$_GET['sep'];
+$op=$_GET['op'];
+ //echo "$str $sep $op";
+switch($op)
+{
+ case 'a':$m=explode($sep,$str);
+ foreach($m as $a){
+ echo "$a<br>";
+ }
+ break;
+ case 'b':
+ $cnt=substr_count($str,$sep);
+ $n=str_replace($sep,"!",$str,$cnt);
+ echo "After changing separators<br>";
+ echo $n;
+ break;
+ case 'c':$ar=explode(" ",$str);
+ $cnt=count($ar);
+ echo "This is the last word : ".$ar[$cnt-1];
+ break;
+}
+?>
