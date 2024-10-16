@@ -1,0 +1,18 @@
+Slip14: Create a container add row inside it and add 3 columns inside row using BootStrap.
+<html>
+<head>
+<link rel="stylesheet" href="bootstrap.min.css">
+</head>
+<body>
+<div class=container>
+ <div class="row bg-light" >
+ <div class="col-4">col1
+ </div>
+ <div class="col-4">col2
+ </div>
+ <div class="col-4">col3
+ </div>
+ </div>
+</div>
+</body>
+</html>
