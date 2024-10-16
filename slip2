@@ -1,0 +1,21 @@
+Slip 2: Create HTML5 page with following specifications
+i) Title should be about your City.
+ii) Color the background by Pink color.
+iii) Place your city name at the top of page in large text and in blue color.
+iv) Add names of the landmarks in your city, each in different color, style and font
+v) Add any image at the bottom. (Use inline CSS to format the web page)
+Solution:
+<html>
+<head>
+<title>PUNE</title>
+<body style="background-color:Pink;">
+<h3 style="font-size:100px; color:blue;"> PUNE</h3>
+<ul>
+ <li style="color:brown; font-style: italic;">Dagadu Seth Ganpati Temple</li>
+ <li style="color:red; font-style: oblique;">Saras Baug Temple</li>
+ <li style="color:purple; font-style: italic;">Phoenix Market City Pune</li>
+</ul>
+<img src="https://mittalbuilders.com/wp-content/uploads/2020/12/Reasons-tosettle-down-in-Pune.png" width="200" height="200" align="bottom">
+</body>
+</head>
+</html>
