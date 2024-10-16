@@ -1,0 +1,21 @@
+Slip17: Write a PHP script to sort the following associative array :
+array(“Sagar"=>"31","Vicky"=>"41","Leena"=>"39","Ramesh"=>"40") in
+a) ascending order sort by Value
+b) ascending order sort by Key
+c) descending order sorting by Value
+d) descending order sorting by Key
+<?php
+$a = array("Sagar"=>"31","Vicky"=>"41","Leena"=>"39","Ramesh"=>"40");
+echo "sorting in ascending order by value<br>";
+asort($a);
+print_r($a);
+echo "sorting in ascending order by key<br>";
+ksort($a);
+print_r($a);
+echo "sorting in decending order by value<br>";
+arsort($a);
+print_r($a);
+echo "sorting in decending order by key<br>";
+krsort($a);
+print_r($a);
+?>
