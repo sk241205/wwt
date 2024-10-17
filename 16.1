@@ -1,0 +1,192 @@
+Slip no 16
+
+
+Q.1) Write a PHP script for the following: Design a form to accept the marks of 5 different subjects of a student, having serial number, subject name & marks out of 100. Display the result in the tabular format which will have total, percentage and grade. Use only 3 text boxes.(Use array of form parameters)
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Marks Input</title>
+
+</head>
+
+<body>
+
+    <h1>Enter Marks for 5 Subjects</h1>
+
+    <form action="process.php" method="post">
+
+        <label for="subjects">Enter Subjects (comma-separated):</label><br>
+
+        <input type="text" id="subjects" name="subjects" required placeholder="e.g., Math, Science, English, History, Art"><br><br>
+
+
+
+        <label for="marks">Enter Marks (comma-separated):</label><br>
+
+        <input type="text" id="marks" name="marks" required placeholder="e.g., 85, 90, 78, 88, 92"><br><br>
+
+
+
+        <input type="submit" value="Submit">
+
+    </form>
+
+</body>
+
+</html>
+
+
+
+
+PHP CODE
+
+
+<?php
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $subjects = explode(',', $_POST['subjects']);
+
+    $marks = explode(',', $_POST['marks']);
+
+
+
+    // Remove any extra whitespace
+
+    $subjects = array_map('trim', $subjects);
+
+    $marks = array_map('trim', $marks);
+
+
+
+    // Validate that we have 5 subjects and marks
+
+    if (count($subjects) != 5 || count($marks) != 5) {
+
+        echo "Please enter exactly 5 subjects and 5 marks.";
+
+        exit;
+
+    }
+
+
+
+    // Convert marks to integers
+
+    $marks = array_map('intval', $marks);
+
+
+
+    // Calculate total and percentage
+
+    $total = array_sum($marks);
+
+    $percentage = $total / 5;
+
+
+
+    // Determine grade
+
+    if ($percentage >= 90) {
+
+        $grade = 'A';
+
+    } elseif ($percentage >= 80) {
+
+        $grade = 'B';
+
+    } elseif ($percentage >= 70) {
+
+        $grade = 'C';
+
+    } elseif ($percentage >= 60) {
+
+        $grade = 'D';
+
+    } else {
+
+        $grade = 'F';
+
+    }
+
+
+
+    // Display results in a table
+
+    echo "<h1>Result</h1>";
+
+    echo "<table border='1'>
+
+            <tr>
+
+                <th>Serial No</th>
+
+                <th>Subject</th>
+
+                <th>Marks</th>
+
+            </tr>";
+
+
+
+    for ($i = 0; $i < 5; $i++) {
+
+        echo "<tr>
+
+                <td>" . ($i + 1) . "</td>
+
+                <td>" . htmlspecialchars($subjects[$i]) . "</td>
+
+                <td>" . $marks[$i] . "</td>
+
+              </tr>";
+
+    }
+
+
+
+    echo "<tr>
+
+            <td colspan='2'>Total</td>
+
+            <td>$total</td>
+
+          </tr>
+
+          <tr>
+
+            <td colspan='2'>Percentage</td>
+
+            <td>" . number_format($percentage, 2) . "%</td>
+
+          </tr>
+
+          <tr>
+
+            <td colspan='2'>Grade</td>
+
+            <td>$grade</td>
+
+          </tr>
+
+          </table>";
+
+} else {
+
+    echo "<p>No data received.</p>";
+
+}
+
+?>
+
+
+
+
